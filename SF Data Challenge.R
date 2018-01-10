@@ -886,22 +886,10 @@ ggsave(Number.of.Exemptions.Propplot, filename="Number.of.Exemptions.Propplot.pn
 FarClose.Propplot <- Propplot("FarClose")
 ggsave(FarClose.Propplot, filename="FarClose.Propplot.png", dpi=200, width=6, height=4)
 
+#write to share with team
+# setwd("C:/Users/sbuja/Documents/Salesforce Data Challenge/cleaned_data-20170810T195849Z-001/cleaned_data/")
+# write.csv(Table1CounselPscore, file="Predictor Variables with Propensity Scores.csv", row.names=F)
 
-setwd("C:/Users/sbuja/Documents/Salesforce Data Challenge/cleaned_data-20170810T195849Z-001/cleaned_data/")
-write.csv(Table1CounselPscore, file="Predictor Variables with Propensity Scores.csv", row.names=F)
-
-
-
-
-# 
-#   ggplot(Table1CounselPscore, aes(x=Pscore, y=Risk.PhysHealth, colour=Cstr)) +
-#   geom_point()+
-#   geom_smooth(method="loess", se=F)+
-#   scale_x_continuous("Propensity Score")+
-#   Sp.Theme(legend="right") +
-#   theme(legend.title=element_blank())
-# 
-# 
 
 
 #GLM and Logistic Analyses----
@@ -924,7 +912,9 @@ Model.GD.Log <- glm(Graduate ~ Pscore + Risk.PhysHealth + Risk.Death + Risk.Anxi
                   data=StLvl.NoCurrent, family=binomial())
 summary(Model.GD.Log)
 anova(Model.GD.Log, test="Chisq") #chisq test of logistic regression predictors.
-rocplot(Model.GD.Log)
+Model.GD.Log.rocplot <- rocplot(Model.GD.Log)
+Model.GD.Log.rocplot
+ggsave(Model.GD.Log.rocplot, filename="Model.GD.Log.rocplot.png", dpi=200, height=5, width=6)
 pR2(Model.GD.Log)
 #        llh     llhNull          G2    McFadden        r2ML        r2CU 
 #-19.7741674 -56.7899568  74.0315789   0.6518017   0.4197811   0.7414151 

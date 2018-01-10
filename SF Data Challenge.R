@@ -1275,7 +1275,6 @@ Edu.Grad.plot <- ggplot(data=PredValues, aes(x=Edu.Factor, fill=PresAbs, y=pred)
   theme(legend.title = element_blank(), axis.title.x = element_blank(), legend.text = element_text(size=15), 
         axis.text.x = element_text(size=12))
 Edu.Grad.plot
-setwd("C:/Users/sbuja/Documents/Salesforce Data Challenge/")
 ggsave(Edu.Grad.plot, filename="Edu.Grad.plot.png", width = 5, height=5, dpi=200)
 
 Model.GD.Log.EduCouns <- glm(Graduate ~ Pscore100 + Counseling +

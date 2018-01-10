@@ -1,5 +1,6 @@
-#Salesforce Data Challenge 
-#Spencer Bujarski
+#Salesforce/UCLA Data Science Challenge 
+
+setwd("C:/Users/sbuja/Documents/Salesforce Data Challenge/SF_UCLA-Data-Science-Challenge")
 
 #REQUIRED LIBRARIES----
 library(ggplot2) #plotting
@@ -637,14 +638,6 @@ Sp.Desc(Table1$First.Langauge)
 Table1$First.En <- ifelse(Table1$First.Langauge=="English",1,0)
 Table1$First.Sp <- ifelse(Table1$First.Langauge=="Spanish",1,0)
 Table1$First.Ot <- ifelse(Table1$First.Langauge!="English",ifelse(Table1$First.Langauge!="Spanish",1,0),0)
-# #missing data
-# for(i in 1:dim(Table1)[1]){
-#   if(is.na(Table1$First.Langauge[i])){
-#     Table1$First.En[i] <- NA
-#     Table1$First.Sp[i] <- NA
-#     Table1$First.Ot[i] <- NA
-#   }
-# }
 
 table(Table1$First.En)
 table(Table1$First.Sp)
@@ -693,15 +686,9 @@ Sp.Desc(Table1[c("ELA.MCAS.Score", "Math.MCAS.Score", "Science.MCAS.Score")])
 
 View(Table1)
 
-#Write New CSV
-setwd("C:/Users/sbuja/Documents/Salesforce Data Challenge/cleaned_data-20170810T195849Z-001/cleaned_data/")
-write.csv(Table1, file="Table1 Cleaned.csv", row.names=F)
-
-
-# risk.factors <- read.csv("C:/Users/sbuja/Documents/Salesforce Data Challenge/Risk Factors.csv", header=F)
-# 
-# View(table(risk.factors))
-
+#Write New CSV to share with team
+# setwd("C:/Users/sbuja/Documents/Salesforce Data Challenge/cleaned_data-20170810T195849Z-001/cleaned_data/")
+# write.csv(Table1, file="Table1 Cleaned.csv", row.names=F)
 
 
 
@@ -808,13 +795,15 @@ Pscore.df <- data.frame(Pscore = predict(Model.Pscore, type = "response"),
 #View(Pscore.df)
 
 labs <- c("0 - No Counseling", "1 - Counseling")
-Pscore.df %>%
+Propensity.plot <- Pscore.df %>%
   mutate(Couns= ifelse(Couns==0, labs[1], labs[2])) %>%
   ggplot(aes(x = Pscore)) +
   geom_histogram(colour="white") +
   facet_wrap(~Couns) +
   xlab("Probability of receiving counseling") +
   Sp.Theme()
+Propensity.plot
+ggsave(Propensity.plot, filename="Propensity.plot.png", dpi=200, width=6, height=4)
 
 #Merge Pscore information
 #delete person missing counseling data
@@ -840,18 +829,47 @@ Propplot <- function(varname){
     Sp.Theme(legend="right") +
     theme(legend.title=element_blank())
     
-  print(plot)
+  return(plot)
 }
 
-Propplot("Risk.PhysHealth")
-Propplot("Risk.Death")
-Propplot("Risk.Anxiety")
-Propplot("Risk.Depression")
-Propplot("Risk.MentalHealth")
-Propplot("Risk.Abuse")
-Propplot("Risk.Housing")
-Propplot("Risk.Legal")
-Propplot("Risk.Others")
+Risk.PhysHealth.Propplot <- Propplot("Risk.PhysHealth")
+ggsave(Risk.PhysHealth.Propplot, filename="Risk.PhysHealth.Propplot.png", dpi=200, width=6, height=4)
+
+Risk.Death.Propplot <- Propplot("Risk.Death")
+ggsave(Risk.Death.Propplot, filename="Risk.Death.Propplot.png", dpi=200, width=6, height=4)
+
+Risk.Anxiety.Propplot <- Propplot("Risk.Anxiety")
+ggsave(Risk.Anxiety.Propplot, filename="Risk.Anxiety.Propplot.png", dpi=200, width=6, height=4)
+
+Risk.Depression.Propplot <- Propplot("Risk.Depression")
+ggsave(Risk.Depression.Propplot, filename="Risk.Depression.Propplot.png", dpi=200, width=6, height=4)
+
+Risk.MentalHealth.Propplot <- Propplot("Risk.MentalHealth")
+ggsave(Risk.MentalHealth.Propplot, filename="Risk.MentalHealth.Propplot.png", dpi=200, width=6, height=4)
+
+Risk.Abuse.Propplot <- Propplot("Risk.Abuse")
+ggsave(Risk.Abuse.Propplot, filename="Risk.Abuse.Propplot.png", dpi=200, width=6, height=4)
+
+Risk.Housing.Propplot <- Propplot("Risk.Housing")
+ggsave(Risk.Housing.Propplot, filename="Risk.Housing.Propplot.png", dpi=200, width=6, height=4)
+
+Risk.Legal.Propplot <- Propplot("Risk.Legal")
+ggsave(Risk.Legal.Propplot, filename="Risk.Legal.Propplot.png", dpi=200, width=6, height=4)
+
+Risk.Others.Propplot <- Propplot("Risk.Others")
+ggsave(Risk.Others.Propplot, filename="Risk.Others.Propplot.png", dpi=200, width=6, height=4)
+
+Service.SNAP.Propplot <- Propplot("Service.SNAP")
+ggsave(Service.SNAP.Propplot, filename="Service.SNAP.Propplot.png", dpi=200, width=6, height=4)
+
+Service.Section8.Propplot <- Propplot("Service.Section8")
+ggsave(Service.Section8.Propplot, filename="Service.Section8.Propplot.png", dpi=200, width=6, height=4)
+
+Service.Others.Propplot <- Propplot("Service.Others")
+ggsave(Service.Others.Propplot, filename="Service.Others.Propplot.png", dpi=200, width=6, height=4)
+
+
+
 Propplot("Service.SNAP")
 Propplot("Service.Section8")
 Propplot("Service.Others")

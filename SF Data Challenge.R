@@ -1831,7 +1831,6 @@ Demo.WentToClass.plot <- ggplot(data=PredValues, aes(x=Demo.Factor, fill=PresAbs
   theme(legend.title = element_blank(), axis.title.x = element_blank(), legend.text = element_text(size=15), 
         axis.text.x = element_text(size=12))
 Demo.WentToClass.plot
-setwd("C:/Users/sbuja/Documents/Salesforce Data Challenge/")
 ggsave(Demo.WentToClass.plot, filename="Demo.WentToClass.plot.png", width = 7, height=5, dpi=200)
 
 

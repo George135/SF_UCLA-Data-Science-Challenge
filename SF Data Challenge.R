@@ -1627,12 +1627,6 @@ summary(Model.Benchmarks.EduCouns)
 
 write.csv
 
-#Eve asked for the datasets
-setwd("C:/Users/sbuja/Documents/Salesforce Data Challenge/cleaned_data-20170810T195849Z-001/cleaned_data/")
-write.csv(StLvl.T2, file="Table 1 and 2 Merged.csv", row.names=F)
-write.csv(StLvl.NoCurrent, file="Table 1 No Current Students.csv")
-
-
 #Went to class
 Model.WentToClass.Risk <- lm(Percentage_WentToClass ~ Pscore100 +  
                                Risk.PhysHealth +
@@ -1701,7 +1695,6 @@ Risk.WentToClass.plot <- ggplot(data=PredValues, aes(x=Risk.Factor, fill=PresAbs
   theme(legend.title = element_blank(), axis.title.x = element_blank(), legend.text = element_text(size=15), 
         axis.text.x = element_text(size=12))
 Risk.WentToClass.plot
-setwd("C:/Users/sbuja/Documents/Salesforce Data Challenge/")
 ggsave(Risk.WentToClass.plot, filename="Risk.WentToClass.plot.png", width = 10.4, height=5, dpi=200)
 
 

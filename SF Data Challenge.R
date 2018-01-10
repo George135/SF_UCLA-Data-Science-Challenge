@@ -1766,7 +1766,6 @@ Risk.WentToClass.Couns.plot <- ggplot(data=PredValues, aes(x=PresAbs, fill=Couns
         panel.background = element_rect(colour = "black", fill=NA),
         strip.text.x=element_text(size=11, face="bold"), strip.background = element_blank())
 Risk.WentToClass.Couns.plot
-setwd("C:/Users/sbuja/Documents/Salesforce Data Challenge/")
 ggsave(Risk.WentToClass.Couns.plot, filename="Risk.WentToClass.Couns.plot.png", width = 7, height=5, dpi=200)
 
 

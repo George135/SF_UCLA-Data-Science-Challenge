@@ -868,17 +868,23 @@ ggsave(Service.Section8.Propplot, filename="Service.Section8.Propplot.png", dpi=
 Service.Others.Propplot <- Propplot("Service.Others")
 ggsave(Service.Others.Propplot, filename="Service.Others.Propplot.png", dpi=200, width=6, height=4)
 
+Race.Bl.Propplot <- Propplot("Race.Bl")
+ggsave(Race.Bl.Propplot, filename="Race.Bl.Propplot.png", dpi=200, width=6, height=4)
 
+Race.La.Propplot <- Propplot("Race.La")
+ggsave(Race.La.Propplot, filename="Race.La.Propplot.png", dpi=200, width=6, height=4)
 
-Propplot("Service.SNAP")
-Propplot("Service.Section8")
-Propplot("Service.Others")
-Propplot("Race.Bl")
-Propplot("Race.La")
-Propplot("Female")
-Propplot("SpecialEd")
-Propplot("Number.of.Exemptions")
-Propplot("FarClose")
+Female.Propplot <- Propplot("Female")
+ggsave(Female.Propplot, filename="Female.Propplot.png", dpi=200, width=6, height=4)
+
+SpecialEd.Propplot <- Propplot("SpecialEd")
+ggsave(SpecialEd.Propplot, filename="SpecialEd.Propplot.png", dpi=200, width=6, height=4)
+
+Number.of.Exemptions.Propplot <- Propplot("Number.of.Exemptions")
+ggsave(Number.of.Exemptions.Propplot, filename="Number.of.Exemptions.Propplot.png", dpi=200, width=6, height=4)
+
+FarClose.Propplot <- Propplot("FarClose")
+ggsave(FarClose.Propplot, filename="FarClose.Propplot.png", dpi=200, width=6, height=4)
 
 
 setwd("C:/Users/sbuja/Documents/Salesforce Data Challenge/cleaned_data-20170810T195849Z-001/cleaned_data/")

@@ -1018,7 +1018,7 @@ exp(cbind(OR = coef(Model.GD.Log.NoEmp), confint(Model.GD.Log.NoEmp)))
 
 
 #More targetted tests of counseling effect
-#Throwing everything at teh table doesn't seem to work. 
+#Throwing everything at the table doesn't seem to work. 
 #Try by group
 
 #Risk factors
@@ -1094,7 +1094,6 @@ Risk.Grad.plot <- ggplot(data=PredValues, aes(x=Risk.Factor, fill=PresAbs, y=pre
   theme(legend.title = element_blank(), axis.title.x = element_blank(), legend.text = element_text(size=15), 
         axis.text.x = element_text(size=12))
 Risk.Grad.plot
-setwd("C:/Users/sbuja/Documents/Salesforce Data Challenge/")
 ggsave(Risk.Grad.plot, filename="Risk.Grad.plot.png", width = 10, height=5, dpi=200)
 
 

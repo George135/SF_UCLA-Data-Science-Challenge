@@ -1214,7 +1214,6 @@ Demo.Grad.plot <- ggplot(data=PredValues, aes(x=Demo.Factor, fill=PresAbs, y=pre
   theme(legend.title = element_blank(), axis.title.x = element_blank(), legend.text = element_text(size=15), 
         axis.text.x = element_text(size=12))
 Demo.Grad.plot
-setwd("C:/Users/sbuja/Documents/Salesforce Data Challenge/")
 ggsave(Demo.Grad.plot, filename="Demo.Grad.plot.png", width = 5, height=5, dpi=200)
 
 
